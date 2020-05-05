@@ -189,3 +189,5 @@ dist
 .pnp.*
 
 dist/
+
+.env

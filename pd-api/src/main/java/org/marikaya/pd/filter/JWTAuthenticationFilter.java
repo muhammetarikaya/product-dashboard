@@ -34,8 +34,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public Authentication attemptAuthentication(HttpServletRequest req,
                                                 HttpServletResponse res) throws AuthenticationException {
         try {
-            UserDTO userDTO = new ObjectMapper()
-                    .readValue(req.getInputStream(), UserDTO.class);
+            UserDTO userDTO = new ObjectMapper().readValue(req.getInputStream(), UserDTO.class);
 
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
@@ -54,10 +53,10 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             FilterChain chain,
                                             Authentication auth) throws IOException, ServletException {
         String token = Jwts.builder()
-                .setSubject(((User) auth.getPrincipal()).getUsername())
+                .setSubject(((UserDTO) auth.getPrincipal()).getUsername())
                 .setExpiration(new Date(System.currentTimeMillis() + this.jwtProperties.getExpirationTime()))
                 .signWith(SignatureAlgorithm.HS512, this.jwtProperties.getSecretKey().getBytes())
                 .compact();
-        res.addHeader(this.jwtProperties.getHeaderKey(), this.jwtProperties.getPrefix() + token);
+        res.addHeader(this.jwtProperties.getHeaderKey(), this.jwtProperties.getPrefix() +" "+ token);
     }
 }

@@ -1,17 +1,18 @@
 import React from 'react'
 import {Provider} from 'react-redux'
 import {Router} from 'react-router-dom'
-import store from '../Store'
-import Routes from '../Router'
+import Store from './store'
+import Routes from './router'
+import History from './history';
+import ApiService from "./apiservice";
 
-const createHashHistory = require('history').createHashHistory;
-const history = createHashHistory();
+export const dataService = new ApiService(Store);
 
 export default class Root extends React.Component {
     render() {
         return (
-            <Provider store={store}>
-                <Router history={history}>
+            <Provider store={Store}>
+                <Router history={History}>
                     <Routes/>
                 </Router>
             </Provider>

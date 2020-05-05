@@ -2,7 +2,7 @@ import * as constants from '../constants/login.constants'
 
 const initialState = {
     data: {},
-    isLoading: false,
+    loading: false,
     isLoggedIn: false,
     error: false
 };
@@ -15,13 +15,13 @@ export default function loginReducer(state = initialState, {
         case constants.USER_LOGGING_IN:
             return {
                 ...state,
-                isLoading: true
+                loading: true
             };
         case constants.USER_LOGGED_IN:
             return {
                 ...state,
                 data: payload,
-                isLoggedIn: true
+                loading: false
             };
         default:
             return initialState
@@ -31,6 +31,6 @@ export default function loginReducer(state = initialState, {
 const store = {
     auth: {
         data: null,
-        isloading: false
+        loading: false
     }
 };

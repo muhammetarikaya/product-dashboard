@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const Dotenv = require('dotenv-webpack');
 
 const config = {
     entry: {
@@ -68,10 +69,12 @@ const config = {
             'react-dom': '@hot-loader/react-dom'
         }
     },
+    devtool: 'source-map',
     devServer: {
         contentBase: './dist'
     },
     plugins: [
+        new Dotenv(),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: 'index.html',
