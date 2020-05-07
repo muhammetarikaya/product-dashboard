@@ -23,4 +23,7 @@ public class UserDAO extends BaseDAO<UserEntity, UserDTO, Long, UserRepository, 
         return null;
     }
 
+    public String getUserPassword(String email){
+        return this.repository.getPasswordByEmail(email);
+    }
 }

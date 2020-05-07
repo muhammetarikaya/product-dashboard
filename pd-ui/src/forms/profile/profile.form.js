@@ -22,7 +22,7 @@ class ProfileForm extends React.Component {
                 {data &&
                 <Form
                     {...layout}
-                    name="productForm"
+                    name="profileForm"
                     initialValues={
                         {
                             key: data.key,
@@ -56,7 +56,7 @@ class ProfileForm extends React.Component {
                         name="email"
                         rules={[{required: true, message: 'Please input email!'}]}
                     >
-                        <Input type={"email"}/>
+                        <Input disabled={true} type={"email"}/>
                     </Form.Item>
 
 

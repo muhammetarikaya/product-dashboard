@@ -34,8 +34,9 @@ public class ProfileController {
     public UserDTO saveProfile(Authentication authentication, @RequestBody UserDTO userDTO) {
         String loggedUserEmail = (String) authentication.getPrincipal();
         if (userDTO.getEmail().equals(loggedUserEmail)) {
+            String userPassword = this.userDAO.getUserPassword(loggedUserEmail);
+            userDTO.setPassword(userPassword);
             UserDTO savedUserDTO = this.userDAO.save(userDTO);
-
             if (logger.isInfoEnabled()) {
                 logger.info("[ProfileController][saveProfile] -> Profile is updated, EMAIL >>  {} ", loggedUserEmail);
             }

@@ -32,8 +32,8 @@ export default class Routes extends React.Component {
         return (
             <Switch>
                 <Route exact path="/login" component={LoginPage}/>
-                <PrivateRoute exact path="/" component={HomePage}/>
-                <PrivateRoute exact path="/home" component={HomePage}/>
+                <PrivateRoute exact path="/" component={ProductsPage}/>
+                <PrivateRoute exact path="/home" component={ProductsPage}/>
                 <PrivateRoute exact path="/products" component={ProductsPage}/>
                 <PrivateRoute exact path="/productDetail/:id" component={ProductDetailPage}/>
                 <PrivateRoute exact path="/profile" component={ProfilePage}/>

@@ -6,6 +6,7 @@ import {Col, Layout, Row} from "antd";
 import Content from "../Content/Content";
 import AppLink from "../AppLink/AppLink";
 import PropTypes from "prop-types";
+import history from "../../history";
 
 import "./PrimaryLayout.less";
 import ZoomOutOutlined from "@ant-design/icons/lib/icons/ZoomOutOutlined";
@@ -13,11 +14,16 @@ import ShopOutlined from "@ant-design/icons/lib/icons/ShopOutlined";
 import {UserOutlined} from "@ant-design/icons";
 
 class PrimaryLayout extends React.Component {
+
+    logout() {
+        sessionStorage.clear();
+        history.push("/login");
+    }
     render() {
         return (
             <Layout>
                 <Header  rightSide={
-                    <AppLink withoutStyle={true} to={"/logout"}>Logout</AppLink>
+                    <a onClick={this.logout}>Logout</a>
                 } loading={this.props.loading}>
                     Header
                 </Header>
