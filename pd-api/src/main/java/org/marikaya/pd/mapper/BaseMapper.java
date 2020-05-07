@@ -15,7 +15,6 @@ public abstract class BaseMapper<E extends BaseEntity, D extends BaseDTO> {
         firstObj.setLastUpdatedDate(secondObj.getLastUpdatedDate());
         firstObj.setId(secondObj.getId());
         firstObj.setCreatedDate(secondObj.getCreatedDate());
-        firstObj.setVersion(secondObj.getVersion());
         return firstObj;
     }
 
@@ -23,7 +22,6 @@ public abstract class BaseMapper<E extends BaseEntity, D extends BaseDTO> {
         firstObj.setLastUpdatedDate(secondObj.getLastUpdatedDate());
         firstObj.setId(secondObj.getId());
         firstObj.setCreatedDate(secondObj.getCreatedDate());
-        firstObj.setVersion(secondObj.getVersion());
         return firstObj;
     }
 

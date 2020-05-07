@@ -22,7 +22,7 @@ class ApiService {
         this.instance = axios.create({
             baseURL: API_URL,
             headers: {
-                "Content-Type": "application/json"
+                'Content-Type': 'application/json;charset=UTF-8',
             },
             validateStatus: function (status) {
                 return status >= 200 && status < 500;
@@ -33,10 +33,11 @@ class ApiService {
             store.dispatch(dataLoading());
             store.dispatch(showLoading());
 
-            const user = JSON.parse(localStorage.getItem('user'));
-            if (user && user.token) {
-                config.headers['Authorization'] = `Bearer ${user.token}`;
+            const token = sessionStorage.getItem('token');
+            if (token) {
+                config.headers['Authorization'] = token;
             }
+
             return config;
         }, (error) => {
             store.dispatch(dataLoaded());
@@ -58,7 +59,7 @@ class ApiService {
             //	FORBIDDEN(403, "Forbidden"),
             if (response.status === 403) {
                 message.error("Bu Sayfaya Erisim Yetkiniz Bulunmamaktadir")
-                history.push("/error/403")
+                history.push("/login")
             }
 
             if (response.headers['content-type'] === 'application/octet-stream') {
@@ -93,8 +94,19 @@ class ApiService {
         return this.instance.get(url);
     }
 
+
+
     post(url, data, config) {
         return this.instance.post(url, data, config);
+    }
+
+    postJson(url, data) {
+        let axiosConfig = {
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+            }
+        };
+        return this.instance.post(url, data, axiosConfig);
     }
 
     put(url, data) {

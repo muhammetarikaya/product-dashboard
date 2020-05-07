@@ -4,7 +4,9 @@ import {Route, Switch} from 'react-router'
 import LoginPage from './containers/login/login.page'
 import HomePage from './containers/home/home.page'
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import ProductPage from "./containers/products/product.page";
+import ProductsPage from "./containers/products/products.page";
+import ProfilePage from "./containers/profile/profile.page";
+import ProductDetailPage from "./containers/productdetail/product.detail.page";
 
 export default class Routes extends React.Component {
     constructor(props) {
@@ -32,7 +34,9 @@ export default class Routes extends React.Component {
                 <Route exact path="/login" component={LoginPage}/>
                 <PrivateRoute exact path="/" component={HomePage}/>
                 <PrivateRoute exact path="/home" component={HomePage}/>
-                <PrivateRoute exact path="/products" component={ProductPage}/>
+                <PrivateRoute exact path="/products" component={ProductsPage}/>
+                <PrivateRoute exact path="/productDetail/:id" component={ProductDetailPage}/>
+                <PrivateRoute exact path="/profile" component={ProfilePage}/>
             </Switch>
         )
     }

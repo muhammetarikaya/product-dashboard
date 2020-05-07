@@ -1,5 +1,6 @@
 package org.marikaya.pd.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -10,6 +11,8 @@ public class UserDTO extends BaseDTO implements UserDetails {
     private String fullName;
     private String email;
     private String title;
+
+    @JsonIgnore
     private String password;
 
     public String getFullName() {

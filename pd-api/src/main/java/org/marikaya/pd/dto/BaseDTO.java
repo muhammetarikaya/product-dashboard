@@ -1,9 +1,16 @@
 package org.marikaya.pd.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.util.Date;
 
 public abstract class BaseDTO {
+
+    @JsonProperty("key")
     private long id;
+
     private Date lastUpdatedDate;
     private Date createdDate;
     private int version;

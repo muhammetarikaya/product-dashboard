@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const Dotenv = require('dotenv-webpack');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const config = {
     entry: {
@@ -74,6 +75,7 @@ const config = {
         contentBase: './dist'
     },
     plugins: [
+        new FaviconsWebpackPlugin('favicon.png'),
         new Dotenv(),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({

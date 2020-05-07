@@ -26,10 +26,6 @@ public abstract class BaseEntity {
     @Column(name = "LAST_UPDATED_DATE")
     private Date lastUpdatedDate;
 
-    @Column(name = "VERSION")
-    @Version
-    private Integer version = 0;
-
     public long getId() {
         return id;
     }
@@ -54,11 +50,4 @@ public abstract class BaseEntity {
         this.lastUpdatedDate = lastUpdatedDate;
     }
 
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
 }

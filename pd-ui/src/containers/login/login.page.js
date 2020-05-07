@@ -7,7 +7,7 @@ import history from "../../history";
 import "./login.page.less";
 import {login} from "../../api/login.api";
 
-class Login extends React.Component {
+class LoginPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -60,4 +60,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage)
